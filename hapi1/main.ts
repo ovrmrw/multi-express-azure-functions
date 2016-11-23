@@ -34,10 +34,17 @@ export const azureFunction: AzureFunction =
       .catch(err => err);
     // server.stop();
     context.log('result:', result);
-    
-    context.res = {
-      status: 200,
-      body: result,
+
+    if (result.error) {
+      context.res = {
+        status: result.statusCode,
+        body: result.error,
+      }
+    } else {
+      context.res = {
+        status: 200,
+        body: result
+      }
     }
     context.done();
   };
