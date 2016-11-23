@@ -1,4 +1,4 @@
-const createAzureFunctionHandler = require('azure-function-express').createAzureFunctionHandler;
+// const createAzureFunctionHandler = require('azure-function-express').createAzureFunctionHandler;
 
 import * as express from 'express';
 
