@@ -1,50 +1,37 @@
-import * as Hapi from 'hapi';
-import * as fetch from 'isomorphic-fetch';
-
 import { AzureFunction } from '../types';
-import { passedTimeMessage, logResponse } from '../lib/utils';
+import { passedTimeMessage } from '../lib/utils';
+import { server } from './server';
+import { createFetch } from './utils';
 
-
-const server = new Hapi.Server();
-server.connection({
-  // host: '0.0.0.0',
-  // port: 20000
-});
-
-server.route({
-  method: 'GET',
-  path: '/hello',
-  handler: function (request, reply) {
-    return reply({ message: 'hello world' });
-  }
-});
-
-server.start((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log('Server running at:', server.info.uri);
-});
 
 export const azureFunction: AzureFunction =
   async (context, req) => {
-    context.log('segments:', req.params.segments);
-    const result = await fetch(server.info.uri + '/' + req.params.segments)
-      .then(res => res.json())
-      .catch(err => err);
-    // server.stop();
-    context.log('result:', result);
+    const startTime = new Date().getTime();
+    console.log('segments:', req.params.segments);
+    console.log('body:', req.body);
+    console.log('query:', req.query);
 
-    if (result.error) {
-      context.res = {
-        status: result.statusCode,
-        body: result.error,
+    try {
+      const result: any = await createFetch(server.info.uri, req)
+        .then(res => res.json());
+
+      if (result.error) {
+        context.res = {
+          status: result.statusCode,
+          body: { error: result.error }
+        }
+      } else {
+        context.res = {
+          status: 200,
+          body: { result },
+        }
       }
-    } else {
+    } catch (err) {
       context.res = {
-        status: 200,
-        body: result
+        status: 500,
+        body: err.message || err,
       }
     }
-    context.done();
+    console.log('context.res:', JSON.stringify(context.res, null, 2));
+    console.log(passedTimeMessage(startTime));
   };

@@ -14,10 +14,7 @@ child.execSync('tsc --outDir ' + LOCALHOST);
 
 
 const dirList = [
-  'cloudant',
-  'createCustomToken',
-  'graphql',
-  'httptriggernodejs2',
+  'hapi1',
   'lodash',
 ];
 
@@ -43,7 +40,7 @@ dirList.forEach(dir => {
 
 
 const fileList = [
-  '.env',
+  // '.env',
 ];
 
 fileList.forEach(file => {

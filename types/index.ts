@@ -14,16 +14,11 @@ export interface AFContext {
 export interface AFRequest {
   originalUrl: string;
   method: string;
-  headers: AFHeaders;
+  headers: any;
   body: any;
+  rawBody: any;
   query: any;
   params: any;
-}
-
-
-export interface AFHeaders {
-  host: string;
-  // 'x-original-url': string;
 }
 
 
