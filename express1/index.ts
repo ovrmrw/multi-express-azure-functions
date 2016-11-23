@@ -6,7 +6,7 @@ import * as express from 'express';
 
 // Create express app as usual 
 const app = express();
-app.get('/foo/:foo/:bar', (req, res) => {
+app.get('/api/:foo/:bar', (req, res) => {
   res.json({
     foo: req.params.foo,
     bar: req.params.bar
