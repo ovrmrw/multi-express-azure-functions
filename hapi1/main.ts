@@ -32,5 +32,9 @@ export const azureFunction: AzureFunction =
       .then(res => res.text());
     server.stop();
 
+    context.res = {
+      status: 200,
+      body: result,
+    }
     context.done();
   };
