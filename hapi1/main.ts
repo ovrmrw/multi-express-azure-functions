@@ -28,11 +28,13 @@ server.start((err) => {
 
 export const azureFunction: AzureFunction =
   async (context, req) => {
-    const result = await fetch(server.info.uri + '/hello')
-      .then(res => res.text());
+    context.log('segments:', req.params.segments);
+    const result = await fetch(server.info.uri + '/' + req.params.segments)
+      .then(res => res.text())
+      .catch(err => err);
     // server.stop();
-    context.log(req.params);
-
+    context.log('result:', result);
+    
     context.res = {
       status: 200,
       body: result,
