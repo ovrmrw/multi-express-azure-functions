@@ -7,10 +7,6 @@ import { createFetch } from './utils';
 export const azureFunction: AzureFunction =
   async (context, req) => {
     const startTime = new Date().getTime();
-    console.log('segments:', req.params.segments);
-    console.log('body:', req.body);
-    console.log('query:', req.query);
-
     try {
       const result: any = await createFetch(server.info.uri, req)
         .then(res => res.json());
@@ -18,12 +14,12 @@ export const azureFunction: AzureFunction =
       if (result.error) {
         context.res = {
           status: result.statusCode,
-          body: { error: result.error }
+          body: result,
         }
       } else {
         context.res = {
           status: 200,
-          body: { result },
+          body: result,
         }
       }
     } catch (err) {

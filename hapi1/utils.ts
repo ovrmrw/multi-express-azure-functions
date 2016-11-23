@@ -8,12 +8,20 @@ export function createFetch(baseUri: string, req: AFRequest): Promise<IResponse>
     p.push(key + '=' + encodeURIComponent(req.query[key]));
     return p;
   }, [] as string[]);
+
   const url = baseUri + (req.params.segments ? '/' + req.params.segments : '') + (query.length ? '?' + query.join('&') : '');
 
-  return fetch(url, {
+  const options = {
     method: req.method,
-    headers: req.headers,
+    headers: Object.assign({
+      'Content-Type': 'application/json',
+    }, req.headers),
     body: req.rawBody,
-    mode: 'same-origin',
-  });
+    // mode: 'same-origin',
+  };
+
+  console.log('fetch url:', url);
+  console.log('fetch options:', options);
+
+  return fetch(url, options);
 }
