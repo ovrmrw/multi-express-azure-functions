@@ -17,6 +17,7 @@ export const azureFunction: AzureFunction =
       body: 'test is ok'
     };
     
+    context.log(context);
     context.log(...logResponse(context));
     context.log(passedTimeMessage(startTime));
     context.done();
