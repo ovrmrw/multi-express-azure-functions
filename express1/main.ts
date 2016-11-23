@@ -1,9 +1,11 @@
 import * as express from 'express';
 
 const app = express();
+app.get('/express1/foo', (req, res) => res.json({ 'test': 'ok' }));
 app.get("/api/:foo", (req, res) => res.json({ foo: req.params.foo }));
 app.get("/api/:foo/:bar", (req, res) => res.json({ foo: req.params.foo, bar: req.params.bar }));
-
+// app.get('/express1/foo',(req,res)=>)
+app.listen(process.env.PORT);
 
 import { AzureFunction } from '../types';
 import { passedTimeMessage, logResponse } from '../lib/utils';
@@ -16,7 +18,8 @@ export const azureFunction: AzureFunction =
       status: 200,
       body: 'test is ok'
     };
-    
+
+    context.log('req.params.route', req.params.route);
     context.log(context);
     context.log(...logResponse(context));
     context.log(passedTimeMessage(startTime));
