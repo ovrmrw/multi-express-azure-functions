@@ -15,7 +15,7 @@ server.route({
   method: 'GET',
   path: '/hello',
   handler: function (request, reply) {
-    return reply('hello world');
+    return reply({ message: 'hello world' });
   }
 });
 
@@ -30,7 +30,7 @@ export const azureFunction: AzureFunction =
   async (context, req) => {
     context.log('segments:', req.params.segments);
     const result = await fetch(server.info.uri + '/' + req.params.segments)
-      .then(res => res.text())
+      .then(res => res.json())
       .catch(err => err);
     // server.stop();
     context.log('result:', result);
