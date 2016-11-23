@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "lib": [
+      "dom",
+      "es2017"
+    ]
+  },
+  "include": [
+    "../**/*"
+  ],
+  "exclude": [
+    "../test",
+    "../node_modules",
+    "../jspm_packages"
+  ]
+}

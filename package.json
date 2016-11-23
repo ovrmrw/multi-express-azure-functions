@@ -1,0 +1,45 @@
+{
+  "name": "multi-express-azure-functions",
+  "version": "1.0.0",
+  "description": "(experimental)",
+  "main": "index.js",
+  "scripts": {
+    "prod": "npm install --only=production",
+    "pretest": "tsc -p build/tsconfig-test.json",
+    "test": "mocha -r dotenv/config .dest-test/test/lib/espower-enable --timeout 5000 .dest-test/test/**/*.js",
+    "build:azure": "tsc -p build/tsconfig-azure.json",
+    "deploy": "node build/deploy-to-azure-functions.js",
+    "local": "node build/build-localhost.js && cd localhost && func init && func host start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovrmrw/multi-express-azure-functions.git"
+  },
+  "author": "Tomohiro Noguchi (@ovrmrw)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ovrmrw/multi-express-azure-functions/issues"
+  },
+  "homepage": "https://github.com/ovrmrw/multi-express-azure-functions#readme",
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "azure-function-express": "^0.1.0",
+    "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "express-jwt": "^5.1.0",
+    "lodash": "^4.17.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "0.0.33",
+    "@types/express": "^4.0.34",
+    "@types/express-jwt": "0.0.33",
+    "@types/lodash": "^4.14.40",
+    "@types/mocha": "^2.2.33",
+    "@types/node": "^6.0.50",
+    "@types/power-assert": "^1.4.29",
+    "mocha": "^3.1.2",
+    "power-assert": "^1.4.2",
+    "typescript": "^2.1.1"
+  }
+}
