@@ -7,8 +7,8 @@ import { passedTimeMessage, logResponse } from '../lib/utils';
 
 const server = new Hapi.Server();
 server.connection({
-  host: '0.0.0.0',
-  port: 20000
+  // host: '0.0.0.0',
+  // port: 20000
 });
 
 server.route({
@@ -28,9 +28,10 @@ server.start((err) => {
 
 export const azureFunction: AzureFunction =
   async (context, req) => {
-    const result = await fetch('http://localhost:20000/hello')
+    const result = await fetch(server.info.uri + '/hello')
       .then(res => res.text());
-    server.stop();
+    // server.stop();
+    context.log(req.params);
 
     context.res = {
       status: 200,
