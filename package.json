@@ -1,5 +1,5 @@
 {
-  "name": "multi-express-azure-functions",
+  "name": "multi-server-azure-functions",
   "version": "1.0.0",
   "description": "(experimental)",
   "main": "index.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ovrmrw/multi-express-azure-functions.git"
+    "url": "git+https://github.com/ovrmrw/multi-server-azure-functions.git"
   },
   "author": "Tomohiro Noguchi (@ovrmrw)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ovrmrw/multi-express-azure-functions/issues"
+    "url": "https://github.com/ovrmrw/multi-server-azure-functions/issues"
   },
-  "homepage": "https://github.com/ovrmrw/multi-express-azure-functions#readme",
+  "homepage": "https://github.com/ovrmrw/multi-server-azure-functions#readme",
   "dependencies": {
     "app-root-path": "^2.0.1",
     "azure-function-express": "^0.1.0",
@@ -30,6 +30,7 @@
     "express-jwt": "^5.1.0",
     "firebase-admin": "^4.0.3",
     "hapi": "^15.2.0",
+    "hapi-auth-jwt2": "^7.2.3",
     "isomorphic-fetch": "^2.2.1",
     "joi": "^10.0.1",
     "lodash": "^4.17.2"

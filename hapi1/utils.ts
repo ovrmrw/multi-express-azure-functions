@@ -20,7 +20,7 @@ export function createFetch(baseUri: string, req: AFRequest): Promise<IResponse>
     // mode: 'same-origin',
   };
 
-  console.log('fetch url:', url);
+  console.log('\nfetch url:', url);
   console.log('fetch options:', options);
 
   return fetch(url, options);
