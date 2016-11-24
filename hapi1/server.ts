@@ -4,7 +4,7 @@ import * as Hapi from 'hapi';
 const HapiAuthJwt = require('hapi-auth-jwt2');
 
 import { routes } from './routes';
-import { auth0ClientId, auth0ClientSecret, auth0Domain } from '../lib/const';
+import { auth0ClientId, auth0ClientSecret } from '../lib/const';
 
 
 const server = new Hapi.Server();
@@ -24,7 +24,6 @@ server.register(HapiAuthJwt, (err) => {
       verifyOptions: {
         algorithms: ['HS256'],
         audience: auth0ClientId,
-        // issuer: 'https://' + auth0Domain + '/',
       },
       validateFunc: (decoded, request, callback) => {
         console.log('\ndecoded:', JSON.stringify(decoded, null, 2));
