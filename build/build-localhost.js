@@ -14,6 +14,7 @@ child.execSync('tsc --outDir ' + LOCALHOST);
 
 
 const dirList = [
+  'express1',
   'hapi1',
   'lodash',
 ];
@@ -40,7 +41,7 @@ dirList.forEach(dir => {
 
 
 const fileList = [
-  // '.env',
+  '.env',
 ];
 
 fileList.forEach(file => {

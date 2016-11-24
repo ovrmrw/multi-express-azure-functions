@@ -13,7 +13,7 @@ export const azureFunction: AzureFunction =
 
       if (result.error) {
         context.res = {
-          status: result.statusCode,
+          status: result.error.status, // result.statusCode,
           body: result,
         }
       } else {
