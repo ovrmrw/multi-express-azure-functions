@@ -2,8 +2,8 @@ import { Router } from 'express';
 
 import { firebaseApp } from '../lib/firebase';
 
-
 export const router = Router();
+
 
 export const unlockPaths: string[] = [
   '/hello',

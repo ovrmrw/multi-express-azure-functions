@@ -1,6 +1,6 @@
 import * as fetch from 'isomorphic-fetch';
 
-import { AFRequest } from '../types';
+import { AFRequest } from '../../types';
 
 
 export function createFetch(baseUri: string, req: AFRequest): Promise<IResponse> {
