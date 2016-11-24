@@ -3,6 +3,8 @@
 
 ---
 
+Multi server apps on the one host with authorization security.
+
 ## Setup
 ```
 $ npm install
