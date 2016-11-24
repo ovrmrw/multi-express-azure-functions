@@ -16,11 +16,6 @@ $ npm run local
 
 (atention) Make sure to be installed Visual Studio (NOT VSCode) before using `azure-functions-cli`.
 
-## Unit Test
-```
-$ npm test
-```
-
 ## Deploy
 ```
 $ npm run deploy

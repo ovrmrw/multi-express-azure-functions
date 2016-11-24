@@ -17,7 +17,6 @@ export function createFetch(baseUri: string, req: AFRequest): Promise<IResponse>
       'Content-Type': 'application/json',
     }, req.headers),
     body: req.rawBody,
-    // mode: 'same-origin',
   };
 
   console.log('\nfetch url:', url);

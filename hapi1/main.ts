@@ -1,7 +1,7 @@
 import { AzureFunction } from '../types';
 import { passedTimeMessage } from '../lib/utils';
 import { uriAsPromise } from './server';
-import { createFetch } from './utils';
+import { createFetch } from './fetch';
 
 
 export const azureFunction: AzureFunction =
@@ -25,7 +25,7 @@ export const azureFunction: AzureFunction =
     } catch (err) {
       context.res = {
         status: 500,
-        body: err.message || err,
+        body: err,
       }
     }
     console.log('\ncontext.res:', JSON.stringify(context.res, null, 2));
