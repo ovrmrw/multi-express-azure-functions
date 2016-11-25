@@ -58,6 +58,6 @@ module.exports = [
     module: {
       loaders: loaders
     },
-    devtool: 'inline-source-map',
+    // devtool: 'source-map',
   }
 ];
