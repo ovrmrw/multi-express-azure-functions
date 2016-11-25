@@ -10,7 +10,7 @@ const loaders = [
   {
     test: /\.json$/,
     loader: "json-loader",
-    exclude: /^\.\/secret\-key/,
+    exclude: /\.\/secret(-|)key/i,
   },
   {
     test: /\.js$/,
@@ -33,7 +33,7 @@ module.exports = [
       'lodash': './lodash/index.ts',
     },
     output: {
-      filename: '[name]/index.js',
+      filename: './.dest-webpack/[name]/index.js',
       libraryTarget: "commonjs2"
     },    
     resolve: {

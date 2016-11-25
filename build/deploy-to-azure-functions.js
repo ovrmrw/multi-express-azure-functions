@@ -15,8 +15,9 @@ const commands = [
   'git branch deploy-azure',
   'git checkout deploy-azure',
   'git rebase master',
-  'npm run build:azure',
+  // 'npm run build:azure',
   'npm run webpack:p',
+  'node build/copy-bundled-files.js',
   'git add -A',
   'git commit -m "built js files for deploy"',
   'git push origin deploy-azure -f',
@@ -30,6 +31,7 @@ commands.forEach(command => {
     const result = execSync(command).toString();
     console.log('result:', result);
   } catch (err) {
-    console.error('error:', err.Error);
+    // console.error('error:', err.Error);
+    throw err;
   }
 });
