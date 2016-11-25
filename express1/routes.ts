@@ -1,12 +1,12 @@
 import { Router } from 'express';
+const router = Router();
 
-import { firebaseFactory } from '../lib/firebase';
-const firebaseApp = firebaseFactory('express1');
-
-export const router = Router();
+// import { firebaseFactory } from '../lib/firebase';
+// const firebaseApp = firebaseFactory('express1');
 
 
-export const unlockPaths: string[] = [
+
+export const unlockRoutes: string[] = [
   '/hello',
 ];
 
@@ -24,7 +24,8 @@ router.all('/hello', async (req, res) => {
 router.post('/createCustomToken', async (req, res) => {
   try {
     const uid: string = req.body.user_id;
-    const customToken: string = await firebaseApp.auth().createCustomToken(uid);
+    // const customToken: string = await firebaseApp.auth().createCustomToken(uid);
+    const customToken = 'mock';
     res.json({ customToken });
   } catch (error) {
     res.status(500).json({ error });
@@ -36,3 +37,6 @@ router.use((error, req, res, next) => {
   // console.log('error:', error);
   res.status(error.status).json({ error });
 });
+
+
+export const routes = router;

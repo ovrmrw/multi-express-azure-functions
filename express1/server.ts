@@ -4,7 +4,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 const jwt = require('express-jwt');
 
-import { router, unlockPaths } from './routes';
+import { routes, unlockRoutes } from './routes';
 import { auth0ClientId, auth0ClientSecret } from '../lib/const';
 
 
@@ -25,14 +25,14 @@ if (process.env.NODE_ENV === 'local') {
   console.log('**  Authentication is now disabled.  **');
   console.log('=======================================\n');
 } else {
-  app.use(jwtCheck.unless({ path: unlockPaths }));
+  app.use(jwtCheck.unless({ path: unlockRoutes }));
 }
 
 
 app.use(bodyParser.json());
 
 
-app.use('/', router);
+app.use('/', routes);
 
 
 export const uriAsPromise = new Promise<string>((resolve, reject) => {

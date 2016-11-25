@@ -3,9 +3,9 @@ import * as firebase from 'firebase';
 import { firebaseDatabaseURL, firebaseServiceAccountKeyJson } from '../const';
 
 
-let firebaseApp: firebase.app.App;
+let firebaseApp: any;
 
-export function firebaseFactory(instanceName: string): firebase.app.App {
+export function firebaseFactory(instanceName: string): any {
   const name = instanceName || '__DEFAULT__';
   if (!firebaseApp) {
     firebaseApp = firebase.initializeApp({
