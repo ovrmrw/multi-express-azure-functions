@@ -12,7 +12,6 @@ fs.emptyDirSync(LOCALHOST);
 
 child.execSync('tsc --outDir ' + LOCALHOST);
 
-// child.execSync('npm run webpack');
 
 const dirList = [
   'express1',
@@ -54,3 +53,7 @@ fileList.forEach(file => {
     console.error(err.message);
   }
 });
+
+
+child.execSync('npm run webpack');
+fs.copySync(path.join(appRoot, '.dest-webpack'), path.join(appRoot, LOCALHOST));

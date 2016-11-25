@@ -28,7 +28,6 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-jwt": "^5.1.0",
-    "firebase": "^3.6.1",
     "firebase-admin": "^4.0.3",
     "hapi": "^15.2.0",
     "hapi-auth-jwt2": "^7.2.3",
