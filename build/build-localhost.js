@@ -17,10 +17,11 @@ const dirList = [
   'express1',
   'hapi1',
   'lodash',
+  'secret-key',
 ];
 
 dirList.forEach(dir => {
-  fs.copy(dir, LOCALHOST + '/' + dir, {
+  fs.copySync(dir, LOCALHOST + '/' + dir, {
     filter: (filePath) => {
       if (filePath.match(/node_modules/) || filePath.match(/\.ts$/)) {
         return false;
@@ -52,3 +53,17 @@ fileList.forEach(file => {
     console.error(err.message);
   }
 });
+
+
+// const secretFileList = [
+//   'app.secret.json',
+//   'serviceAccountKey.json',
+// ];
+
+// secretFileList.forEach(file => {
+//   fs.copySync('secret-key/' + file, LOCALHOST + '/hapi1/' + file);
+// });
+
+// child.execSync('npm run webpack:hapi1');
+
+

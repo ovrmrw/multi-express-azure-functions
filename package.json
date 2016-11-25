@@ -9,7 +9,8 @@
     "test": "mocha -r dotenv/config .dest-test/test/lib/espower-enable --timeout 5000 .dest-test/test/**/*.js",
     "build:azure": "tsc -p build/tsconfig-azure.json",
     "deploy": "node build/deploy-to-azure-functions.js",
-    "local": "node build/build-localhost.js && cd localhost && func init && func host start"
+    "local": "node build/build-localhost.js && cd localhost && func init && func host start",
+    "webpack:hapi1": "webpack --config webpack.config.hapi1.js"
   },
   "repository": {
     "type": "git",
@@ -46,9 +47,15 @@
     "@types/mocha": "^2.2.33",
     "@types/node": "^6.0.50",
     "@types/power-assert": "^1.4.29",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-latest": "^6.16.0",
     "fs-extra": "^1.0.0",
+    "json-loader": "^0.5.4",
     "mocha": "^3.1.2",
     "power-assert": "^1.4.2",
-    "typescript": "^2.1.1"
+    "ts-loader": "^1.2.2",
+    "typescript": "^2.1.1",
+    "webpack": "^2.1.0-beta.27"
   }
 }

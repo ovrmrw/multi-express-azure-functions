@@ -1,12 +1,10 @@
-// require('dotenv').config();
+const appRootDir = require('app-root-path').path;
 
-// const appRootDir = require('app-root-path').path;
+const secretKeyDir = appRootDir + '/secret-key';
 
-// const secretKeyDir = '../../secret-key';
+const appSecretKeyJson = require(secretKeyDir + '/app.secret.json');
 
-const appSecretKeyJson = require('../../secret-key/app.secret.json');
-
-const firebaseServiceAccountKeyJson = require('../../secret-key/serviceAccountKey.json');
+export const firebaseServiceAccountKeyJson = require(secretKeyDir + '/serviceAccountKey.json');
 
 
 export const auth0ClientId = appSecretKeyJson.auth0.clientId;
@@ -25,6 +23,3 @@ if ([firebaseDatabaseURL].some(key => !key)) {
   console.error('Firebase env keys:', { firebaseDatabaseURL });
   throw new Error('Env keys for Firebase are not collected.');
 }
-
-
-export { firebaseServiceAccountKeyJson };

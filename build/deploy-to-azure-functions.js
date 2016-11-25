@@ -16,11 +16,12 @@ const commands = [
   'git checkout deploy-azure',
   'git rebase master',
   'npm run build:azure',
+  'npm run webpack:hapi1',
   'git add -A',
   'git commit -m "built js files for deploy"',
-  'git push origin deploy-azure -f',
-  'git checkout master',
-  'git branch -D deploy-azure',
+  // 'git push origin deploy-azure -f',
+  // 'git checkout master',
+  // 'git branch -D deploy-azure',
 ];
 
 commands.forEach(command => {

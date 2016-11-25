@@ -44,6 +44,7 @@ jspm_packages
 /data
 /secret
 /localhost
+/lib/const/*.json
 
 .env
 *.secret.json
