@@ -33,13 +33,13 @@ dirList.forEach(dir => {
   });
 });
 
-dirList.forEach(dir => {
-  try {
-    fs.symlinkSync(path.join(appRoot, dir, NODE_MODULES), path.join(appRoot, LOCALHOST, dir, NODE_MODULES), 'junction');
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+// dirList.forEach(dir => {
+//   try {
+//     fs.symlinkSync(path.join(appRoot, dir, NODE_MODULES), path.join(appRoot, LOCALHOST, dir, NODE_MODULES), 'junction');
+//   } catch (err) {
+//     console.error(err.message);
+//   }
+// });
 
 
 const fileList = [
@@ -49,22 +49,8 @@ const fileList = [
 fileList.forEach(file => {
   // fs.copy(file, LOCALHOST + '/' + file);
   try {
-    fs.symlinkSync(path.join(appRoot, file), path.join(appRoot, LOCALHOST, file), 'file');
+    fs.copySync(path.join(appRoot, file), path.join(appRoot, LOCALHOST, file));
   } catch (err) {
     console.error(err.message);
   }
 });
-
-
-// const secretFileList = [
-//   'app.secret.json',
-//   'serviceAccountKey.json',
-// ];
-
-// secretFileList.forEach(file => {
-//   fs.copySync('secret-key/' + file, LOCALHOST + '/hapi1/' + file);
-// });
-
-
-
-

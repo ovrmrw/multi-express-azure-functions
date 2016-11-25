@@ -9,7 +9,7 @@ export function firebaseFactory(instanceName: string): any {
   const name = instanceName || '__DEFAULT__';
   if (!firebaseApp) {
     firebaseApp = admin.initializeApp({
-      serviceAccount: firebaseServiceAccountKeyJson,
+      credential: admin.credential.cert(firebaseServiceAccountKeyJson),
       databaseURL: firebaseDatabaseURL,
     }, name);
   }

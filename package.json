@@ -11,7 +11,7 @@
     "deploy": "node build/deploy-to-azure-functions.js",
     "local": "node build/build-localhost.js && cd localhost && func init && func host start",
     "webpack": "webpack --progress",
-    "webpack:p": "webpack --progress -p"
+    "webpack:prod": "webpack --progress -p"
   },
   "repository": {
     "type": "git",

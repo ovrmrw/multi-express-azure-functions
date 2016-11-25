@@ -1,3 +1,8 @@
+const fs = require('fs-extra');
+const DEST = '.dest-webpack';
+fs.emptyDirSync(DEST);
+
+
 const webpack = require('webpack');
 
 
@@ -19,6 +24,7 @@ const loaders = [
       presets: ['latest'],
       plugins: []
     },
+    // exclude: /(node_modules|bower_components)/,
   }
 ];
 
@@ -28,14 +34,14 @@ module.exports = [
     name: 'server bundle',
     target: 'node',
     entry: {
-      'hapi1': './hapi1/index.ts',
-      'express1': './express1/index.ts',
-      'lodash': './lodash/index.ts',
+      'hapi1': './hapi1/main.ts',
+      'express1': './express1/main.ts',
+      'lodash': './lodash/main.ts',
     },
     output: {
-      filename: './.dest-webpack/[name]/index.js',
+      filename: DEST + '/[name]/main.js',
       libraryTarget: "commonjs2"
-    },    
+    },
     resolve: {
       extensions: ['.js', '.ts']
     },
@@ -46,7 +52,10 @@ module.exports = [
         'firebase': 'firebase',
         'firebase-admin': 'firebase-admin',
       }
-    ],    
+    ],
+    plugins: [
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    ],
     // plugins: [
     //   new webpack.optimize.UglifyJsPlugin({
     //     mangle: true,
@@ -57,7 +66,7 @@ module.exports = [
     // ],
     module: {
       loaders: loaders
-    },
+    }
     // devtool: 'source-map',
   }
 ];
