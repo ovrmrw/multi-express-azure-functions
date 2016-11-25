@@ -47,3 +47,4 @@ jspm_packages
 
 .env
 *.secret.json
+*.js.map

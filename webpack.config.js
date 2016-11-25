@@ -25,7 +25,7 @@ const loaders = [
       plugins: []
     },
     // exclude: /(node_modules|bower_components)/,
-    exclude: /firebase-admin/,
+    // exclude: /firebase-admin/,
   }
 ];
 
@@ -52,7 +52,7 @@ module.exports = [
         '../../secret-key/serviceAccountKey.json': '../secret-key/serviceAccountKey.json',
         // 'firebase': 'firebase', // "npm i request" is needed.
         // 'firebase-admin': 'firebase-admin', // "npm i request" is needed.
-        './database/database':'./database/database', // for firebase-admin package.
+        './database/database': 'firebase-admin/lib/database/database', // for firebase-admin package.
       }
     ],
     plugins: [
@@ -69,7 +69,7 @@ module.exports = [
     // ],
     module: {
       loaders: loaders
-    }
-    // devtool: 'source-map',
+    },
+    devtool: 'source-map',
   }
 ];
