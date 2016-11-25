@@ -1,8 +1,8 @@
 import { Router } from 'express';
 const router = Router();
 
-// import { firebaseFactory } from '../lib/firebase';
-// const firebaseApp = firebaseFactory('express1');
+import { firebaseFactory } from '../lib/firebase';
+const firebaseApp = firebaseFactory('express1');
 
 
 export const unlockRoutes: string[] = [
@@ -22,8 +22,8 @@ router.all('/hello', async (req, res) => {
 
 router.post('/createCustomToken', async (req, res) => {
   // lazy loading for FAT Firebase library.
-  const firebaseFactory = require('../lib/firebase').firebaseFactory;
-  const firebaseApp = firebaseFactory('express1');
+  // const firebaseFactory = require('../lib/firebase').firebaseFactory;
+  // const firebaseApp = firebaseFactory('express1');
   try {
     const uid: string = req.body.user_id;
     const customToken: string = await firebaseApp.auth().createCustomToken(uid);
