@@ -1,8 +1,8 @@
 import * as Hapi from 'hapi';
 import * as Joi from 'joi';
 
-import { firebaseFactory } from '../lib/firebase';
-const firebaseApp = firebaseFactory('hapi1');
+// import { firebaseFactory } from '../lib/firebase';
+// const firebaseApp = firebaseFactory('hapi1');
 
 export const routes: Hapi.IRouteConfiguration[] = [];
 
@@ -28,6 +28,9 @@ routes.push({
   method: 'POST',
   path: '/createCustomToken',
   handler: async (req, reply) => {
+    // lazy loading for FAT Firebase library.
+    const firebaseFactory = require('../lib/firebase').firebaseFactory;
+    const firebaseApp = firebaseFactory('hapi1');
     try {
       const uid: string = req.payload.user_id;
       const customToken: string = await firebaseApp.auth().createCustomToken(uid);
