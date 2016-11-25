@@ -1,14 +1,14 @@
-import * as admin from 'firebase-admin';
+import * as firebase from 'firebase';
 
 import { firebaseDatabaseURL, firebaseServiceAccountKeyJson } from '../const';
 
 
-let firebaseApp: any;
+let firebaseApp: firebase.app.App;
 
-export function firebaseFactory(instanceName: string): any {
+export function firebaseFactory(instanceName: string): firebase.app.App {
   const name = instanceName || '__DEFAULT__';
   if (!firebaseApp) {
-    firebaseApp = admin.initializeApp({
+    firebaseApp = firebase.initializeApp({
       serviceAccount: firebaseServiceAccountKeyJson,
       databaseURL: firebaseDatabaseURL,
     }, name);

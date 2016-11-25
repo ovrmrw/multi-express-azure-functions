@@ -1,8 +1,8 @@
 import * as Hapi from 'hapi';
 import * as Joi from 'joi';
 
-import { firebaseApp } from '../lib/firebase';
-
+import { firebaseFactory } from '../lib/firebase';
+const firebaseApp = firebaseFactory('hapi1');
 
 export const routes: Hapi.IRouteConfiguration[] = [];
 

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
-import { firebaseApp } from '../lib/firebase';
+import { firebaseFactory } from '../lib/firebase';
+const firebaseApp = firebaseFactory('express1');
 
 export const router = Router();
 

@@ -1,11 +1,4 @@
-// require('dotenv').config();
-
-// const appRootDir = require('app-root-path').path;
-
-// const secretKeyDir = '../../secret-key';
-
 const appSecretKeyJson = require('../../secret-key/app.secret.json');
-
 const firebaseServiceAccountKeyJson = require('../../secret-key/serviceAccountKey.json');
 
 

@@ -1,7 +1,7 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 
 
-var loaders = [
+const loaders = [
   {
     test: /\.ts$/,
     loader: "ts-loader",
@@ -10,7 +10,7 @@ var loaders = [
   {
     test: /\.json$/,
     loader: "json-loader",
-    exclude: /secret\-key/,
+    exclude: /^\.\/secret\-key/,
   },
   {
     test: /\.js$/,
@@ -19,16 +19,23 @@ var loaders = [
       presets: ['latest'],
       plugins: []
     },
-    // exclude: /hapi1/,
   }
 ];
 
 
 module.exports = [
   {
-    name: "hapi1",
-    entry: "./hapi1/main.ts",
-    target: "node",
+    name: 'server bundle',
+    target: 'node',
+    entry: {
+      'hapi1': './hapi1/index.ts',
+      'express1': './express1/index.ts',
+      'lodash': './lodash/index.ts',
+    },
+    output: {
+      filename: '[name]/index.js',
+      libraryTarget: "commonjs2"
+    },    
     resolve: {
       extensions: ['.js', '.ts']
     },
@@ -36,23 +43,21 @@ module.exports = [
       {
         '../../secret-key/app.secret.json': '../secret-key/app.secret.json',
         '../../secret-key/serviceAccountKey.json': '../secret-key/serviceAccountKey.json',
+        'firebase': 'firebase',
         'firebase-admin': 'firebase-admin',
       }
-    ],
-    output: {
-      filename: './hapi1/main.js',
-      libraryTarget: "commonjs"
-    },
-    plugins: [
-      new webpack.optimize.UglifyJsPlugin({
-        mangle: true,
-        compress: {
-          warnings: false
-        }
-      }),
-    ],
+    ],    
+    // plugins: [
+    //   new webpack.optimize.UglifyJsPlugin({
+    //     mangle: true,
+    //     compress: {
+    //       warnings: false
+    //     }
+    //   }),
+    // ],
     module: {
       loaders: loaders
-    }
+    },
+    devtool: 'inline-source-map',
   }
 ];

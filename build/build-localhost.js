@@ -12,6 +12,7 @@ fs.emptyDirSync(LOCALHOST);
 
 child.execSync('tsc --outDir ' + LOCALHOST);
 
+// child.execSync('npm run webpack');
 
 const dirList = [
   'express1',
@@ -64,6 +65,6 @@ fileList.forEach(file => {
 //   fs.copySync('secret-key/' + file, LOCALHOST + '/hapi1/' + file);
 // });
 
-// child.execSync('npm run webpack:hapi1');
+
 
 
