@@ -7,11 +7,14 @@ const dirList = [
   'hapi1',
   'express1',
   'lodash',
+  'lib',
+  'types',
+  'repository',
 ];
 
 dirList.forEach(dir => {
   try {
-    del.sync(path.join(appRoot, dir, '*.js.map'));
+    del.sync(path.join(appRoot, dir, '**', '*.js.map'));
   } catch (err) {
     console.error('error:', err);
   }

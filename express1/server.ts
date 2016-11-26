@@ -32,7 +32,19 @@ if (process.env.NODE_ENV === 'local') {
 app.use(bodyParser.json());
 
 
-app.use('/', routes);
+app.use(routes);
+
+
+app.use(async (req, res) => {
+  res.status(404).json({ error: 'Not found' });
+});
+
+
+app.use((err, req, res, next) => {
+  // console.log('error:', error);
+  const message = String(err);
+  res.status(err.status).json({ error: message });
+});
 
 
 export const uriAsPromise = new Promise<string>((resolve, reject) => {

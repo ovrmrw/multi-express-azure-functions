@@ -4,12 +4,12 @@
     "target": "es5",
     "moduleResolution": "node",
     "noImplicitAny": false,
-    "sourceMap": true,
+    "sourceMap": false,
     "strictNullChecks": true,
     "skipLibCheck": true,
     "lib": [
       "dom",
-      "es2017"
+      "es2016"
     ],
     "outDir": ".tscOutDir"
   },

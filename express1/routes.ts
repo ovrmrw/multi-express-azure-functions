@@ -1,12 +1,23 @@
 import { Router } from 'express';
 const router = Router();
 
-import { createCustomToken, createHelloMessage } from '../repository';
+import { createCustomToken, createHelloMessage, createWelcomeMessage } from '../repository';
 
 
 export const unlockRoutes: string[] = [
+  '/',
   '/hello',
 ];
+
+
+router.all('/', async (req, res) => {
+  try {
+    const message = createWelcomeMessage();
+    res.json({ message });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
 
 
 router.all('/hello', async (req, res) => {
@@ -31,12 +42,6 @@ router.post('/createCustomToken', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error });
   }
-});
-
-
-router.use((error, req, res, next) => {
-  // console.log('error:', error);
-  res.status(error.status).json({ error });
 });
 
 

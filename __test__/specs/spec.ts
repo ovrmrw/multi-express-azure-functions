@@ -35,14 +35,15 @@ describe('Unit Test', () => {
   });
 
   it('createCustomToken', async () => {
-    const uid = '';
+    let result: string = '';
+    const uid = '';    
     try {
       await createCustomToken(uid);
     } catch (err) {
-      const result = String(err);
-      console.log(result);
-      assert(result.includes('First argument to createCustomToken() must be a non-empty string uid'));
+      result = String(err);
     }
+    console.log(result);
+    assert(result.includes('First argument to createCustomToken() must be a non-empty string uid'));
   });
 
 });

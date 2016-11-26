@@ -10,10 +10,11 @@ export const azureFunction: AzureFunction =
     try {
       const uri: string = await uriAsPromise;
       const result: any = await createFetch(uri, req).then(res => res.json());
+      console.log('result:', result);
 
       if (result.error) {
         context.res = {
-          status: result.error.status, // result.statusCode,
+          status: result.error.status || 404, // result.statusCode,
           body: result,
         }
       } else {
