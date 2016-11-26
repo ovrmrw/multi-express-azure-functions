@@ -54,5 +54,5 @@ fileList.forEach(file => {
 });
 
 
-child.execSync('npm run webpack');
-fs.copySync(path.join(appRoot, '.dest-webpack'), path.join(appRoot, LOCALHOST));
+// child.execSync('npm run webpack');
+// fs.copySync(path.join(appRoot, '.dest-webpack'), path.join(appRoot, LOCALHOST));

@@ -5,4 +5,4 @@ REM change current dir to wwwroot.
 cd ../wwwroot
 
 REM run npm install.
-npm run prod
+REM npm run prod
