@@ -1,4 +1,3 @@
-const fs = require('fs-extra');
 const execSync = require('child_process').execSync;
 
 
@@ -17,13 +16,14 @@ const commands = [
   'git checkout deploy-azure',
   'git rebase master',
   'npm run build:azure',
-  'npm run webpack:prod',
+  // 'npm run webpack:prod',
   'node build/copy-bundled-files.js',
   'git add -A',
   'git commit -m "built js files for deploy"',
   'git push origin deploy-azure -f',
   'git checkout master',
   'git branch -D deploy-azure',
+  'node build/delete-jsmap-files.js',
 ];
 
 commands.forEach(command => {
@@ -34,20 +34,5 @@ commands.forEach(command => {
   } catch (err) {
     // console.error('error:', err.Error);
     throw err;
-  }
-});
-
-
-const unlinkFiles = [
-  'hapi1/main.js.map',
-  'express1/main.js.map',
-  'lodash/main.js.map',
-];
-
-unlinkFiles.forEach(file => {
-  try {
-    fs.unlinkSync(file);
-  } catch (err) {
-    console.error('error:', err);
   }
 });

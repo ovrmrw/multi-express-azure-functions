@@ -1,7 +1,6 @@
 import { AzureFunction } from '../types';
-import { passedTimeMessage } from '../lib/utils';
+import { createFetch, passedTimeMessage } from '../lib/utils';
 import { uriAsPromise } from './server';
-import { createFetch } from '../lib/utils';
 
 
 export const azureFunction: AzureFunction =

@@ -21,7 +21,7 @@ const dirList = [
 ];
 
 dirList.forEach(dir => {
-  fs.copySync(dir, LOCALHOST + '/' + dir, {
+  fs.copySync(path.join(appRoot, dir), path.join(appRoot, LOCALHOST, dir), {
     filter: (filePath) => {
       if (filePath.match(/node_modules/) || filePath.match(/\.ts$/)) {
         return false;
@@ -46,7 +46,6 @@ const fileList = [
 ];
 
 fileList.forEach(file => {
-  // fs.copy(file, LOCALHOST + '/' + file);
   try {
     fs.copySync(path.join(appRoot, file), path.join(appRoot, LOCALHOST, file));
   } catch (err) {

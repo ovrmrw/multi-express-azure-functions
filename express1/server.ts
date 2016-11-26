@@ -37,10 +37,7 @@ app.use('/', routes);
 
 export const uriAsPromise = new Promise<string>((resolve, reject) => {
   const server = app.listen(port, host, (err) => {
-    if (err) {
-      reject(err);
-      throw err;
-    }
+    if (err) { reject(err); }
     const uri = 'http://' + server.address().address + ':' + server.address().port;
     console.log('Server running at:', uri);
     resolve(uri);

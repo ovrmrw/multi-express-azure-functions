@@ -26,17 +26,8 @@ server.register(HapiAuthJwt, (err) => {
         audience: auth0ClientId,
       },
       validateFunc: (decoded, request, callback) => {
-        console.log('\ndecoded:', JSON.stringify(decoded, null, 2));
-        try {
-          if (!decoded.sub) {
-            return callback(null, false);
-          } else {
-            return callback(null, true);
-          }
-        } catch (err) {
-          return callback(err, false);
-        }
-      },
+        return callback(null, true);
+      }
     });
   }
 
@@ -46,10 +37,7 @@ server.register(HapiAuthJwt, (err) => {
 
 export const uriAsPromise = new Promise<string>((resolve, reject) => {
   server.start((err) => {
-    if (err) {
-      reject(err);
-      throw err;
-    }
+    if (err) { reject(err); }
     console.log('Server running at:', server.info.uri);
     resolve(server.info.uri);
   });

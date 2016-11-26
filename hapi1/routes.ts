@@ -1,10 +1,26 @@
 import * as Hapi from 'hapi';
 import * as Joi from 'joi';
 
-import { firebaseFactory } from '../lib/firebase';
-const firebaseApp = firebaseFactory('hapi1');
+import { createCustomToken, createHelloMessage, createWelcomeMessage } from '../repository';
 
 export const routes: Hapi.IRouteConfiguration[] = [];
+
+
+routes.push({
+  method: ['GET','POST'],
+  path: '/',
+  handler: (req, reply) => {
+    try {
+      const message = createWelcomeMessage();
+      reply({ message });
+    } catch (error) {
+      reply({ error }).code(500);
+    }
+  },
+  config: {
+    auth: false
+  }
+});
 
 
 routes.push({
@@ -13,7 +29,8 @@ routes.push({
   handler: (req, reply) => {
     try {
       const name = req.payload && req.payload.name ? req.payload.name : req.query.name;
-      reply({ message: 'hello world, ' + name });
+      const message = createHelloMessage(name);
+      reply({ message });
     } catch (error) {
       reply({ error }).code(500);
     }
@@ -33,7 +50,7 @@ routes.push({
     // const firebaseApp = firebaseFactory('hapi1');
     try {
       const uid: string = req.payload.user_id;
-      const customToken: string = await firebaseApp.auth().createCustomToken(uid);
+      const customToken: string = await createCustomToken(uid);
       reply({ customToken });
     } catch (error) {
       reply({ error }).code(500);
