@@ -1,3 +1,4 @@
+const fs = require('fs-extra');
 const execSync = require('child_process').execSync;
 
 
@@ -33,5 +34,20 @@ commands.forEach(command => {
   } catch (err) {
     // console.error('error:', err.Error);
     throw err;
+  }
+});
+
+
+const unlinkFiles = [
+  'hapi1/main.js.map',
+  'express1/main.js.map',
+  'lodash/main.js.map',
+];
+
+unlinkFiles.forEach(file => {
+  try {
+    fs.unlinkSync(file);
+  } catch (err) {
+    console.error('error:', err);
   }
 });
