@@ -9,6 +9,7 @@ export const azureFunction: AzureFunction =
     try {
       const uri: string = await uriAsPromise;
       const result: any = await createFetch(uri, req).then(res => res.json());
+      console.log('result:', JSON.stringify(result, null, 2));
 
       if (result.error) {
         context.res = {
@@ -27,6 +28,6 @@ export const azureFunction: AzureFunction =
         body: err,
       }
     }
-    console.log('\ncontext.res:', JSON.stringify(context.res, null, 2));
+    console.log('context.res:', JSON.stringify(context.res, null, 2));
     console.log(passedTimeMessage(startTime));
   };
