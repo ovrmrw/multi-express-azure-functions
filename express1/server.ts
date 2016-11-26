@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(routes);
 
 
-app.use(async (req, res) => {
+app.use((req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 

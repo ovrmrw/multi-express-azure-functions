@@ -10,7 +10,7 @@ export const unlockRoutes: string[] = [
 ];
 
 
-router.all('/', async (req, res) => {
+router.all('/', (req, res) => {
   try {
     const message = createWelcomeMessage();
     res.json({ message });
@@ -20,7 +20,7 @@ router.all('/', async (req, res) => {
 });
 
 
-router.all('/hello', async (req, res) => {
+router.all('/hello', (req, res) => {
   try {
     const name = req.body && req.body.name ? req.body.name : req.query.name;
     const message = createHelloMessage(name);
