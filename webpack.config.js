@@ -1,9 +1,11 @@
 const webpack = require('webpack');
 const fs = require('fs-extra');
 
-const DEST = '.dest-webpack';
 
-fs.emptyDirSync(DEST);
+const DEST_DIR = '.dest-webpack';
+
+fs.removeSync(DEST_DIR);
+fs.mkdirpSync(DEST_DIR);
 
 
 module.exports = [
@@ -16,7 +18,7 @@ module.exports = [
       'lodash': './lodash/main.ts',
     },
     output: {
-      filename: DEST + '/[name]/main.js',
+      filename: DEST_DIR + '/[name]/main.js',
       libraryTarget: "commonjs2"
     },
     resolve: {

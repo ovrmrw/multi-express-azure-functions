@@ -13,15 +13,17 @@ fs.emptyDirSync(LOCALHOST);
 child.execSync('tsc --outDir ' + LOCALHOST);
 
 
-const dirList = [
+const fileList = [
+  'function1',
   'express1',
   'hapi1',
   'lodash',
   'secret-key',
+  '.env',
 ];
 
-dirList.forEach(dir => {
-  fs.copySync(path.join(appRoot, dir), path.join(appRoot, LOCALHOST, dir), {
+fileList.forEach(file => {
+  fs.copySync(path.join(appRoot, file), path.join(appRoot, LOCALHOST, file), {
     filter: (filePath) => {
       if (filePath.match(/node_modules/) || filePath.match(/\.ts$/)) {
         return false;
@@ -30,27 +32,6 @@ dirList.forEach(dir => {
       }
     }
   });
-});
-
-// dirList.forEach(dir => {
-//   try {
-//     fs.symlinkSync(path.join(appRoot, dir, NODE_MODULES), path.join(appRoot, LOCALHOST, dir, NODE_MODULES), 'junction');
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// });
-
-
-const fileList = [
-  '.env',
-];
-
-fileList.forEach(file => {
-  try {
-    fs.copySync(path.join(appRoot, file), path.join(appRoot, LOCALHOST, file));
-  } catch (err) {
-    console.error(err.message);
-  }
 });
 
 
